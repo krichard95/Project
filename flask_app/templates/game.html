@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="\static\styles.css">
+    <title>Show Game</title>
+</head>
+<body>
+    <div class="container background p-4">
+        <div class="d-flex justify-content-end">
+            <a href="/dashboard" class="btn red lightblue m-1">Games</a>
+            <a href="/logout" class="btn red lightblue m-1">Logout</a>
+        </div>
+        <div class="border border-dark tableback row justify-content-evenly mx-5 py-5 m-1">
+            <div class="col-4">
+                <h2 class="fw-bold">{{game.title}}</h2>
+                <div class="d-flex">
+                    {% if game.user_id == user.id %}
+                        <a href="/edit/{{game.id}}" class="btn green m-1">edit</a>
+                        <a href="/delete/{{game.id}}" class="btn btn-danger m-1">delete</a>
+                    {% endif %}
+                </div>
+                <p class="fw-semibold">System: {{game.system}}</p>
+                <p>Date: {{game.date}}</p>
+                <p>Location: {{game.location}}</p>
+                <p>Game Host: {{game.host.username}}</p>
+            </div>
+            <div class="col-4">
+                <p class="fw-semibold">Description:</p>
+                <p class="border border-dark p-3">{{game.description}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
